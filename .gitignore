@@ -135,6 +135,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 # Ignore common OS files
@@ -163,6 +164,9 @@ Pictures/
 Public/
 Jarvis-Voice-Assistant/
 voice_assistant_repo/
+=======
+.DS_Store
+>>>>>>> Stashed changes
 =======
 .DS_Store
 >>>>>>> Stashed changes
