@@ -404,7 +404,8 @@
   }
   
   .content-section h2 {
-    font-size: 40px;
+    font-size: 60px;
+    letter-spacing: 1px;
     font-weight: 800;
     margin-bottom: 24px;
   }
@@ -425,7 +426,6 @@
   .content-section button:hover {
     transform: scale(1.05);
   }
-  
   
 
   /* Feature Banners */
@@ -470,36 +470,24 @@
   
   /* Category Links Section */
   .category-links {
-    padding: 60px 0;
+    padding: 10px 0;
     
   }
-  
   .links-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1240px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    max-width: 1640px;
     margin: 0 auto;
     padding: 0 20px;
   }
+  
   
   .link-card {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    height: 300px;
-  }
-  
-  .link-card:nth-child(1) {
-    border: 3px solid rgb(85, 94, 69);
-  }
-  
-  .link-card:nth-child(2) {
-    border: 3px solid rgb(231, 78, 73);
-  }
-  
-  .link-card:nth-child(3) {
-    border: 3px solid rgb(88, 175, 248);
+    height: 450px;
   }
   
   .link-image {
@@ -533,40 +521,28 @@
     background-color: rgb(243, 243, 243);
     margin: 40px 0;
   }
-  
+
+  .quote .container {
+    max-width: 1400px; /* Wider layout for 2-line appearance */
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
   .quote-text {
-    font-size: 28px;
-    max-width: 800px;
-    margin: 0 auto 20px;
-    line-height: 1.4;
-    position: relative;
-    padding: 0 40px;
+    font-size: 1.5rem; /* ~28px */
+    line-height: 1.5;
+    font-family: "Georgia", serif;
+    color: #333;
+    margin-bottom: 20px;
   }
-  
-  .quote-text::before {
-    content: '"';
-    position: absolute;
-    left: 0;
-    top: -10px;
-    font-size: 60px;
-    color: rgb(127, 127, 127);
-    font-family: "Gotham-Bold", sans-serif;
-  }
-  
-  .quote-text::after {
-    content: '"';
-    position: absolute;
-    right: 0;
-    bottom: -40px;
-    font-size: 60px;
-    color: rgb(127, 127, 127);
-    font-family: "Gotham-Bold", sans-serif;
-  }
-  
+
   .quote-author {
-    font-size: 18px;
-    font-family: "Gotham-Bold", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Arial", sans-serif;
+    color: #000;
   }
+
   
   /* About Section */
   .about-section {
