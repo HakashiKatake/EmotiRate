@@ -80,28 +80,40 @@
     <section class="emoji-rating-section">
         <h2>Rate Our Products</h2>
         <div class="products-container" id="productsContainer">
-           
+            <div class="emoji-modal" id="emojiModal">
+                <div class="emoji-modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>How did this product make you feel?</h3>
+                    <div class="emoji-picker" id="emojiPicker">
+                    </div>
+                    <p class="selected-mood" id="selectedMoodText"></p>
+                    <button class="btn" id="submitRating" disabled>Submit Rating</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="section trending">
         <div class="container">
             <h2 class="section-title">Currently Trending Gear</h2>
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="https://cdn.shopify.com/s/files/1/0239/0512/1472/products/Sport_Band_Ultra_Orange_Front_View.jpg" alt="Sport Band Ultra Orange" class="product-image">
+                    <img src="https://imgs.search.brave.com/u4UcgEK3oP2I5Zrhn868fa2a-zlunEukEEXpn8zy8vE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/bm9tYWQtcm9ja3kt/cG9pbnQtYmFuZC12/MC1oaDAzam5jeWRl/bmQxLmpwZz93aWR0/aD02NDAmY3JvcD1z/bWFydCZhdXRvPXdl/YnAmcz0zODU1N2Qx/M2JjMjYwNmJjZWRh/ZTgyNzZmMDQ2YjA0/OGY3MGEzZDI3" alt="Sport Band Ultra Orange" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Rocky Point Band</h3>
                         <p class="product-subtitle">Natural Titanium Hardware</p>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://cdn.shopify.com/s/files/1/0239/0512/1472/products/Modern_Leather_Case_iPhone_15_Pro_Max_Rustic_Brown_Front_View.jpg" alt="Modern Leather Case" class="product-image">
+                    <img src="https://imgs.search.brave.com/1yht_GChNjhyb67TJSeULATDoxIot8SuHwGxVLw_ixo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/ZXhwZXJpZW5jZS13/aXRoLW5vbWFkLW1v/ZGVybi1sZWF0aGVy/LWNhc2UtaXBob25l/LTE1cHJvLW1heC12/MC1pNjF3ejFjNWRv/cmMxLmpwZWc_d2lk/dGg9NjQwJmNyb3A9/c21hcnQmYXV0bz13/ZWJwJnM9Nzg2ZDZj/ZDcxYjUwMzEzMzJh/ZDFlMjMxODg4ZjVl/NGNhMzA4MjY3OA" alt="Modern Leather Case" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Modern Leather Case</h3>
                         <p class="product-subtitle">iPhone 16 Series | Horween®</p>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://cdn.shopify.com/s/files/1/0239/0512/1472/products/65W_Power_Adapter_Carbide_Front_View.jpg" alt="65W Power Adapter" class="product-image">
+                    <img src="https://imgs.search.brave.com/xh6SQeVKLO-WPMFidy3FwVAx2llJLfptP6XxAa2htPc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGhpaG9uZy5jb20v/d3AtY29udGVudC91/cGxvYWRzL0FBMTBL/LTMwMHgyMjcucG5n" alt="65W Power Adapter" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">65W Power Adapter</h3>
                         <p class="product-subtitle">Dual Port USB-C | Apple Watch Fast Charger</p>
@@ -117,16 +129,7 @@
         
 
 
-        <div class="emoji-modal" id="emojiModal">
-            <div class="emoji-modal-content">
-                <span class="close-modal">&times;</span>
-                <h3>How did this product make you feel?</h3>
-                <div class="emoji-picker" id="emojiPicker">
-                </div>
-                <p class="selected-mood" id="selectedMoodText"></p>
-                <button class="btn" id="submitRating" disabled>Submit Rating</button>
-            </div>
-
+       
     <!-- Ultra Orange Banner -->
     <div class="feature-banner orange">
         <div class="image-section">
