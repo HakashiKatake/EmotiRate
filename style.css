@@ -112,6 +112,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    
   }
   
   .nav-left {
@@ -182,7 +183,7 @@
     justify-content: center;
     text-align: center;
     color: rgb(0, 0, 0);
-    background-image: url('https://cdn.shopify.com/s/files/1/0239/0512/1472/files/hero-icy-blue.jpg?v=1');
+    background-image: url('/assets/hero.webp');
     margin-bottom: 40px;
   }
   
@@ -222,6 +223,13 @@
     font-size: 16px;
     border-radius: 30px;
     transition: background-color 0.3s;
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
+  }
+  
+  .rate-btn {
+    margin-top: auto;
   }
   
   .btn:hover {
@@ -864,6 +872,161 @@
     .feature-subtitle {
       font-size: 24px;
     }
+  }
+  
+  /* Emoji Rating Section */
+  .emoji-rating-section {
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .emoji-rating-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Gotham-Bold', sans-serif;
+    color: #333;
+    font-size: 2.5rem;
+  }
+  
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .product-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 20px;
+  }
+  
+  .product-title {
+    font-family: 'Gotham-Bold', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .product-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  
+  .product-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-grow: 1;
+  }
+  
+  .rate-btn {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  .rating-emoji {
+    font-size: 1.8rem;
+    margin-right: 10px;
+  }
+  
+  .rating-count {
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+  /* Emoji Modal */
+  .emoji-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .emoji-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #777;
+  }
+  
+  .close-modal:hover {
+    color: #333;
+  }
+  
+  .emoji-picker {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+  }
+  
+  .emoji-option {
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    background: none;
+  }
+  
+  .emoji-option:hover {
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+  }
+  
+  .emoji-option.selected {
+    border-color: #3498db;
+    background-color: #e3f2fd;
+  }
+  
+  .selected-mood {
+    font-size: 1.1rem;
+    color: #3498db;
+    margin: 15px 0;
+    min-height: 1.5em;
   }
   
   @media (max-width: 768px) {
