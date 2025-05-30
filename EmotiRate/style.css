@@ -1,0 +1,902 @@
+/* Nomad Goods Homepage Clone - Styles */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  @font-face {
+    font-family: 'Gotham-Bold';
+    src: url('https://cdn.shopify.com/s/files/1/0239/0512/1472/files/Gotham-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Gotham-Book';
+    src: url('https://cdn.shopify.com/s/files/1/0239/0512/1472/files/Gotham-Book.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  body {
+    font-family: "Gotham-Book", "Helvetica Neue", Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+  
+  ul, li {
+    list-style: none;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Gotham-Bold", sans-serif;
+    font-weight: 700;
+  }
+  
+  h1 {
+    font-size: 77px;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  p {
+    margin-bottom: 15px;
+  }
+  
+  /* Layout */
+  .container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section {
+    padding: 60px 0;
+  }
+  
+  /* Header and Navigation */
+  header {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background: white;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .nav-left {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .nav-center {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-center a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  
+  .nav-center a.sale {
+    color: blue;
+  }
+  
+  .nav-right {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgb(227, 22, 59);
+    color: white;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .badge.blue {
+    background-color: rgb(0, 72, 255);
+  }
+  
+  .badge.green {
+    background-color: rgb(85, 94, 69);
+  }
+  
+  .badge.orange {
+    background-color: rgb(238, 173, 12);
+  }
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 85vh;
+    min-height: 550px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-image: url('https://cdn.shopify.com/s/files/1/0239/0512/1472/files/hero-icy-blue.jpg?v=1');
+    margin-bottom: 40px;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background-color: rgb(88, 175, 248);
+    color: rgb(255, 255, 255);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .hero-title {
+    font-size: 77px;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: rgb(33, 33, 33);
+    color: rgb(255, 255, 255);
+    font-family: "Gotham-Bold", sans-serif;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: rgb(50, 50, 50);
+  }
+  
+  /* Category Section */
+  .categories {
+    padding:0px 0;
+    background-color: rgb(243, 243, 243);
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 40px;
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .category-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 300px;
+  }
+  
+  .category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .category-title {
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  /* Trending Products Section */
+  .trending {
+    padding: 60px 0;
+    background-color: rgb(243, 243, 243);
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .product-card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 20px;
+  }
+  
+  .product-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  .product-subtitle {
+    font-size: 14px;
+    color: rgb(127, 127, 127);
+    margin-bottom: 15px;
+  }
+  
+  .product-variant {
+    display: inline-block;
+    background-color: rgb(243, 243, 243);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .price-current {
+    font-family: "Gotham-Bold", sans-serif;
+    font-size: 18px;
+  }
+  
+  .price-original {
+    color: rgb(127, 127, 127);
+    text-decoration: line-through;
+    font-size: 14px;
+  }
+  
+  .sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(227, 22, 59);
+    color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 3px;
+    z-index: 1;
+  }
+  
+  /* Feature Banners */
+  .feature-banner {
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+  }
+  
+  .feature-banner.orange {
+    background-image: url('https://cdn.shopify.com/s/files/1/0239/0512/1472/files/ultra-orange-banner.jpg?v=1');
+  }
+  
+  .feature-banner.leather {
+    background-image: url('https://cdn.shopify.com/s/files/1/0239/0512/1472/files/leather-banner.jpg?v=1');
+  }
+  
+  .feature-content {
+    max-width: 500px;
+    padding: 0 40px;
+  }
+  
+  .feature-title {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+    font-family: "Gotham-Bold", sans-serif;
+    line-height: 1.1;
+  }
+  
+  .feature-subtitle {
+    font-size: 33px;
+    margin-bottom: 25px;
+    color: rgb(255, 255, 255);
+    font-family: "Gotham-Bold", sans-serif;
+    line-height: 1.2;
+  }
+  
+  /* Category Links Section */
+  .category-links {
+    padding: 60px 0;
+    
+  }
+  
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .link-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 300px;
+  }
+  
+  .link-card:nth-child(1) {
+    border: 3px solid rgb(85, 94, 69);
+  }
+  
+  .link-card:nth-child(2) {
+    border: 3px solid rgb(231, 78, 73);
+  }
+  
+  .link-card:nth-child(3) {
+    border: 3px solid rgb(88, 175, 248);
+  }
+  
+  .link-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .link-title {
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  /* Quote Section */
+  .quote {
+    padding: 80px 0;
+    text-align: center;
+    background-color: rgb(243, 243, 243);
+    margin: 40px 0;
+  }
+  
+  .quote-text {
+    font-size: 28px;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.4;
+    position: relative;
+    padding: 0 40px;
+  }
+  
+  .quote-text::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    font-size: 60px;
+    color: rgb(127, 127, 127);
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  .quote-text::after {
+    content: '"';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    font-size: 60px;
+    color: rgb(127, 127, 127);
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  .quote-author {
+    font-size: 18px;
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 40px 0;
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .about-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 400px;
+  }
+  
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 40px;
+  }
+  
+  .about-title {
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-family: "Gotham-Bold", sans-serif;
+    line-height: 1.2;
+  }
+  
+  .about-subtitle {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-family: "Gotham-Book", sans-serif;
+  }
+  
+  /* Sale Products Section */
+  .sale-section {
+    padding: 60px 0;
+    background-color: rgb(243, 243, 243);
+    margin: 40px 0;
+  }
+  
+  .sale-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1240px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+  }
+  
+  .sale-card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .sale-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .sale-info {
+    padding: 20px;
+  }
+  
+  .sale-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  .sale-subtitle {
+    font-size: 14px;
+    color: rgb(127, 127, 127);
+    margin-bottom: 15px;
+  }
+  
+  .sale-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sale-current {
+    font-family: "Gotham-Bold", sans-serif;
+    font-size: 18px;
+  }
+  
+  .sale-original {
+    color: rgb(127, 127, 127);
+    text-decoration: line-through;
+    font-size: 14px;
+  }
+  
+  .sale-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(227, 22, 59);
+    color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 3px;
+    z-index: 1;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: rgb(243, 243, 243);
+    padding: 60px 0 30px;
+    margin-top: 40px;
+  }
+  
+  .footer-logo {
+    height: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    max-width: 1240px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  
+  .footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-family: "Gotham-Bold", sans-serif;
+  }
+  
+  .footer-link {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgb(85, 85, 85);
+    transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+    color: rgb(0, 72, 255);
+  }
+  
+  .newsletter {
+    margin-bottom: 40px;
+    max-width: 1240px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  
+  .newsletter p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    max-width: 500px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    max-width: 400px;
+  }
+  
+  .newsletter-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5px 0 0 5px;
+    font-family: inherit;
+    font-size: 14px;
+  }
+  
+  .newsletter-button {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 0 20px;
+    border-radius: 0 5px 5px 0;
+    font-family: "Gotham-Bold", sans-serif;
+    font-size: 14px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid rgb(221, 221, 221);
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 30px 20px 0;
+  }
+  
+  .copyright {
+    font-size: 12px;
+    color: rgb(127, 127, 127);
+  }
+  
+  .footer-social {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .social-icon {
+    width: 24px;
+    height: 24px;
+    fill: rgb(85, 85, 85);
+    transition: fill 0.3s;
+  }
+  
+  .social-icon:hover {
+    fill: rgb(0, 72, 255);
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .footer-bottom-link {
+    font-size: 12px;
+    color: rgb(127, 127, 127);
+  }
+  
+  /* Cookie Banner */
+  .cookie-banner {
+    display: none; /* Hidden as per requirements */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 900px) {
+    .category-grid,
+    .product-grid,
+    .links-grid,
+    .sale-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-title {
+      font-size: 48px;
+    }
+    
+    .hero-subtitle {
+      font-size: 24px;
+    }
+    
+    .feature-title {
+      font-size: 36px;
+    }
+    
+    .feature-subtitle {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nav-container {
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 20px;
+    }
+    
+    .nav-menu {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    
+    .nav-item {
+      padding: 10px 15px;
+      font-size: 12px;
+    }
+    
+    .hero {
+      height: 60vh;
+    }
+    
+    .hero-title {
+      font-size: 36px;
+    }
+    
+    .hero-subtitle {
+      font-size: 18px;
+    }
+    
+    .section {
+      padding: 40px 0;
+    }
+    
+    .section-title {
+      font-size: 28px;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .feature-content {
+      text-align: center;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+    
+    .about-overlay {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .category-grid,
+    .product-grid,
+    .links-grid,
+    .sale-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .newsletter-form {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .newsletter-input,
+    .newsletter-button {
+      width: 100%;
+      border-radius: 5px;
+    }
+    
+    .hero-title {
+      font-size: 32px;
+    }
+    
+    .feature-title {
+      font-size: 28px;
+    }
+    
+    .quote-text {
+      font-size: 20px;
+      padding: 0 20px;
+    }
+    
+    .quote-text::before,
+    .quote-text::after {
+      font-size: 40px;
+    }
+  }
+  

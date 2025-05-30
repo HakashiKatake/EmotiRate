@@ -134,3 +134,31 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# Ignore common OS files
+.DS_Store
+.Trash/
+*.log
+
+# Ignore user config folders (relative paths)
+.android/
+.codeium/
+.config/
+.idlerc/
+.ipython/
+.local/
+.npm-global/
+.npmrc/
+.oh-my-zsh/
+.vscode/
+.zcompdump*
+.zsh*
+Applications/
+Documents/
+Downloads/
+Music/
+Pictures/
+Public/
+Jarvis-Voice-Assistant/
+voice_assistant_repo/
