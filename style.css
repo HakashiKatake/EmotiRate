@@ -26,7 +26,7 @@
   body {
     font-family: "Gotham-Book", "Helvetica Neue", Arial, sans-serif;
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(243, 243, 243);
     line-height: 1.5;
     overflow-x: hidden;
   }
@@ -153,10 +153,10 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    display: flex;
+    display: flex; /* only this is needed */
     align-items: center;
     justify-content: center;
-  }
+  }  
   
   .badge.blue {
     background-color: rgb(0, 72, 255);
@@ -363,7 +363,71 @@
     border-radius: 3px;
     z-index: 1;
   }
+
+  .button-wrapper {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+   /* Ultra Orange Banner  */
+   .feature-banner.orange {
+    display: flex;
+    max-width: 1600px;
+    margin: 60px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white; /* Red */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    min-height: 700px; /* 🔺 Increased height */
+  }
   
+  .image-section {
+    width: 55%;
+    height: 100%; /* 🔺 Ensure image section fills container height */
+  }
+  
+  .image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes the image nicely fill the area */
+  }
+  
+  .content-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 50px;
+    height: 100%; /* 🔺 Fill container height */
+  }
+  
+  .content-section h2 {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 24px;
+  }
+  
+  .content-section button {
+    background-color: #000;
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .content-section button:hover {
+    transform: scale(1.05);
+  }
+  
+  
+
   /* Feature Banners */
   .feature-banner {
     position: relative;
