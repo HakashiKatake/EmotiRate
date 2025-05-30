@@ -50,6 +50,29 @@ let closeModalBtn;
 let currentProductId = null;
 let selectedMood = null;
 
+// Load ratings from localStorage
+function loadRatings() {
+    const savedRatings = localStorage.getItem('productRatings');
+    if (savedRatings) {
+        const parsedRatings = JSON.parse(savedRatings);
+        products.forEach(product => {
+            const savedProduct = parsedRatings.find(p => p.id === product.id);
+            if (savedProduct) {
+                product.ratings = savedProduct.ratings;
+            }
+        });
+    }
+}
+
+// Save ratings to localStorage
+function saveRatings() {
+    const productsToSave = products.map(({ id, ratings }) => ({
+        id,
+        ratings: [...ratings] // Create a new array to avoid reference issues
+    }));
+    localStorage.setItem('productRatings', JSON.stringify(productsToSave));
+}
+
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize DOM elements
@@ -59,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
     selectedMoodText = document.getElementById('selectedMoodText');
     submitRatingBtn = document.getElementById('submitRating');
     closeModalBtn = document.querySelector('.close-modal');
+    
+    // Load saved ratings
+    loadRatings();
     
     // Setup event listeners
     setupEventListeners();
@@ -131,7 +157,7 @@ function renderProducts() {
     });
 }
 
-// Render emoji picker
+// Render emoji picker with accessibility features
 function renderEmojiPicker() {
     if (!emojiPicker) return;
     
@@ -142,107 +168,268 @@ function renderEmojiPicker() {
         emojiBtn.className = 'emoji-option';
         emojiBtn.setAttribute('data-mood-index', index);
         emojiBtn.textContent = mood.emoji;
-        emojiBtn.setAttribute('aria-label', mood.phrase);
+        emojiBtn.setAttribute('aria-label', `Rate ${mood.phrase.toLowerCase()}`);
+        emojiBtn.setAttribute('aria-pressed', 'false');
+        emojiBtn.setAttribute('role', 'radio');
+        emojiBtn.setAttribute('tabindex', '0');
         
+        // Add tooltip
+        const tooltip = document.createElement('span');
+        tooltip.className = 'emoji-tooltip';
+        tooltip.textContent = mood.phrase;
+        emojiBtn.appendChild(tooltip);
+        
+        // Event listeners
         emojiBtn.addEventListener('click', () => selectMood(index));
+        emojiBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectMood(index);
+            }
+        });
         
         emojiPicker.appendChild(emojiBtn);
     });
 }
 
-// Open rating modal
+// Open rating modal with animation
 function openModal(productId) {
     currentProductId = productId;
     selectedMood = null;
+    
+    // Reset selected mood text with animation
+    selectedMoodText.style.opacity = '0';
+    selectedMoodText.style.transform = 'translateY(-10px)';
     selectedMoodText.textContent = '';
+    selectedMoodText.classList.remove('show');
+    
     submitRatingBtn.disabled = true;
     
     // Remove selected class from all emojis
     document.querySelectorAll('.emoji-option').forEach(emoji => {
         emoji.classList.remove('selected');
+        emoji.setAttribute('aria-pressed', 'false');
     });
     
+    // Show modal with animation
     emojiModal.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    
+    // Trigger animation on next frame
+    requestAnimationFrame(() => {
+        emojiModal.classList.add('show');
+    });
+    
+    // Focus on first emoji for keyboard navigation
+    setTimeout(() => {
+        const firstEmoji = emojiPicker.querySelector('.emoji-option');
+        if (firstEmoji) firstEmoji.focus();
+        
+        // Add ARIA live region for modal open
+        const liveRegion = document.createElement('div');
+        liveRegion.className = 'sr-only';
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.textContent = 'Rating dialog opened. Use arrow keys to navigate between emoji options.';
+        document.body.appendChild(liveRegion);
+        
+        // Remove after announcement
+        setTimeout(() => {
+            liveRegion.remove();
+        }, 1000);
+    }, 100);
+    
+    // Add keyboard event listener for modal
+    document.addEventListener('keydown', handleModalKeyDown);
 }
 
-// Close rating modal
+// Close rating modal with animation
 function closeModal() {
-    emojiModal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    // Start fade out animation
+    emojiModal.classList.remove('show');
+    
+    // Add ARIA live region for modal close
+    const liveRegion = document.createElement('div');
+    liveRegion.className = 'sr-only';
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.textContent = 'Rating dialog closed.';
+    document.body.appendChild(liveRegion);
+    
+    // Remove after announcement
+    setTimeout(() => {
+        liveRegion.remove();
+    }, 1000);
+    
+    // Remove modal after animation completes
+    setTimeout(() => {
+        emojiModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }, 300); // Match this with CSS transition time
+    
+    // Remove keyboard event listener
+    document.removeEventListener('keydown', handleModalKeyDown);
+}
+
+// Handle keyboard navigation in modal
+function handleModalKeyDown(e) {
+    // Close on Escape key
+    if (e.key === 'Escape') {
+        closeModal();
+        return;
+    }
+    
+    // Handle arrow key navigation between emojis
+    if (['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+        e.preventDefault();
+        const emojis = Array.from(document.querySelectorAll('.emoji-option'));
+        const currentIndex = emojis.findIndex(el => el === document.activeElement);
+        
+        if (currentIndex === -1) return;
+        
+        let nextIndex;
+        switch (e.key) {
+            case 'ArrowRight':
+                nextIndex = (currentIndex + 1) % emojis.length;
+                break;
+            case 'ArrowLeft':
+                nextIndex = (currentIndex - 1 + emojis.length) % emojis.length;
+                break;
+            case 'ArrowUp':
+                nextIndex = (currentIndex - 3 + emojis.length) % emojis.length;
+                break;
+            case 'ArrowDown':
+                nextIndex = (currentIndex + 3) % emojis.length;
+                break;
+        }
+        
+        emojis[nextIndex].focus();
+    }
+    
+    // Select emoji with Enter or Space
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const emojiIndex = document.activeElement.getAttribute('data-mood-index');
+        if (emojiIndex !== null) {
+            selectMood(parseInt(emojiIndex));
+        }
+    }
 }
 
 // Handle mood selection
 function selectMood(moodIndex) {
     selectedMood = moods[moodIndex];
-    selectedMoodText.textContent = selectedMood.phrase;
+    
+    // Animate mood text
+    selectedMoodText.style.opacity = '0';
+    selectedMoodText.style.transform = 'translateY(10px)';
+    
+    setTimeout(() => {
+        selectedMoodText.textContent = selectedMood.phrase;
+        selectedMoodText.style.opacity = '1';
+        selectedMoodText.style.transform = 'translateY(0)';
+        selectedMoodText.classList.add('show');
+    }, 150);
+    
     submitRatingBtn.disabled = false;
     
     // Update UI to show selected emoji
     document.querySelectorAll('.emoji-option').forEach((emoji, index) => {
         if (index === moodIndex) {
             emoji.classList.add('selected');
+            emoji.setAttribute('aria-pressed', 'true');
+            emoji.focus(); // Keep focus on selected emoji
         } else {
             emoji.classList.remove('selected');
+            emoji.setAttribute('aria-pressed', 'false');
         }
     });
+    
+    // Auto-focus submit button after a short delay for better UX
+    setTimeout(() => {
+        submitRatingBtn.focus();
+        
+        // Add visual feedback for screen readers
+        const notification = document.createElement('div');
+        notification.className = 'sr-only';
+        notification.setAttribute('aria-live', 'polite');
+        notification.textContent = `Selected ${selectedMood.phrase} rating`;
+        document.body.appendChild(notification);
+        
+        // Remove after announcement
+        setTimeout(() => {
+            notification.remove();
+        }, 1000);
+    }, 100);
 }
 
 // Handle rating submission
 function handleRatingSubmission() {
     if (!currentProductId || !selectedMood) return;
     
-    // Add rating to the product
-    const product = products.find(p => p.id === currentProductId);
-    if (product) {
-        product.ratings.push({
-            mood: selectedMood.emoji,
-            score: selectedMood.score,
-            timestamp: new Date().toISOString()
-        });
-        
-        // Update the UI
-        renderProducts();
-        
-        // Close the modal
-        closeModal();
-        
-        // Show success message
-        showNotification(`Thanks for your ${selectedMood.phrase.toLowerCase()} rating!`);
-    }
+    // Disable button and show loading state
+    submitRatingBtn.disabled = true;
+    submitRatingBtn.textContent = 'Submitting...';
+    
+    // Simulate API call delay
+    setTimeout(() => {
+        try {
+            const product = products.find(p => p.id === currentProductId);
+            if (product) {
+                // Add new rating
+                product.ratings.push({
+                    mood: selectedMood.emoji,
+                    score: selectedMood.score,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // Save to localStorage
+                saveRatings();
+                
+                // Update the UI
+                renderProducts();
+                
+                // Close the modal
+                closeModal();
+                
+                // Show success message with emoji
+                showNotification(`Thanks for your ${selectedMood.emoji} ${selectedMood.phrase.toLowerCase()} rating!`, 'success');
+            }
+        } catch (error) {
+            console.error('Error submitting rating:', error);
+            showNotification('Failed to submit rating. Please try again.', 'error');
+        } finally {
+            // Reset button state
+            if (submitRatingBtn) {
+                submitRatingBtn.disabled = false;
+                submitRatingBtn.textContent = 'Submit Rating';
+            }
+        }
+    }, 800); // Simulate network delay
 }
 
-// Show notification
-function showNotification(message) {
+// Show notification with type (success/error)
+function showNotification(message, type = 'info') {
     // Create notification element
     const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
+    notification.className = `notification notification-${type}`;
     
-    // Add styles
-    notification.style.position = 'fixed';
-    notification.style.bottom = '20px';
-    notification.style.left = '50%';
-    notification.style.transform = 'translateX(-50%)';
-    notification.style.backgroundColor = '#333';
-    notification.style.color = 'white';
-    notification.style.padding = '12px 24px';
-    notification.style.borderRadius = '4px';
-    notification.style.zIndex = '1000';
-    notification.style.opacity = '0';
-    notification.style.transition = 'opacity 0.3s ease';
+    // Add icon based on type
+    let icon = 'ℹ️';
+    if (type === 'success') icon = '✅';
+    if (type === 'error') icon = '❌';
+    
+    notification.innerHTML = `${icon} ${message}`;
     
     // Add to DOM
     document.body.appendChild(notification);
     
     // Trigger fade in
     setTimeout(() => {
-        notification.style.opacity = '1';
+        notification.classList.add('show');
     }, 10);
     
     // Remove after delay
     setTimeout(() => {
-        notification.style.opacity = '0';
+        notification.classList.remove('show');
         setTimeout(() => {
             notification.remove();
         }, 300);
